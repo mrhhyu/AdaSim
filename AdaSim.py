@@ -10,7 +10,7 @@ import math
 from scipy.sparse import csr_matrix
 from sklearn.preprocessing import normalize
 
-def compute_AdaSim (graph='', decay_factor=0, iterations=0, alpha_val=1.0,link_type='',GT_path=''):
+def compute_AdaSim (graph='', decay_factor=0, iterations=0, alpha_val=1.0,link_type=''):
 
     if link_type not in {'in-link', 'out-link','none'}:
         print('Link-type must be in-link, out-link, or none ...')
