@@ -12,7 +12,7 @@ scipy        >=1.7.*
 scikit-learn >=1.0.*
 ```
 
-**Graph file format**
+**Graph file format:**
 A graph must be represented as a text file under the *edge list format* in which, each line corresponds to an edge in the graph, tab is used as the separator of the two nodes, and the node index is started from 0. 
 
 ## Proof of AdaSim Scores Properties
