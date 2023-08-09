@@ -1,9 +1,7 @@
 '''
 Created on Apr 13, 2021
-
-@note: This is the official implementation of AdaSim applicable to BOTH directed and undirected graphs published in CIKM 2021 
+This is the official implementation of AdaSim applicable to BOTH directed and undirected graphs published in CIKM 2021 
 @note: For directed graphs, similarity can be computed based on in-links or out-links
-
 @author: masoud
 '''
 import numpy as np
