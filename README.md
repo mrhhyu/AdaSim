@@ -1,6 +1,6 @@
 # AdaSim: A Recursive Similarity Measure in Graphs
 
-This repository provides a reference implementation of AdaSim as well as the proof of AdaSim scores properties.
+This repository provides the python implementation of AdaSim as well as the proof of AdaSim scores properties.
 
 ## Installation and usage
 AdaSim is a recursive link-based similarity measure based on the classic Adamic/Adar philosophy. AdaSim is applicable to **both** directed and undirected graphs. In the case of directed graphs, similarity scores can be computed based on any of in-links or out-links. In order to use AdaSim, the following packages are required:
