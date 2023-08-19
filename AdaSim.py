@@ -36,16 +36,14 @@ def compute_AdaSim (graph='', decay_factor=0, iterations=0, alpha_val=1.0,link_t
         adamic_scores.setdiag(0) ## corresponding to the ∧ opertaor in Equation (12)
         adamic_scores = adamic_scores/np.max(adamic_scores)  # min-max normalization
         result_matrix = csr_matrix(decay_factor*alpha_val*adamic_scores)    
-         
-        ''' @NOTE: Set diagonal values to one for writing results; since they are NOT used in computing similarity scores, we can skip this line for higher efficiency '''        
-        result_matrix.setdiag(1) ## set diagonal values to one; it is just for writing results since they are NOT used in computing similarity scores
+        result_matrix.setdiag(1) ## set diagonal values to one; it is just for writing results since they are NOT used in computing similarity scores we can skip this line for better efficiency
             
         weight_matrix = normalize(weight_matrix, norm='l1', axis=0) # column normalized weight_matrix    
         for itr in range (2, iterations+1):                            
             print("Iteration "+str(itr)+' .... \n')
             result_matrix.setdiag(0) ## diagonal values are set back to zero; corresponding to the ∧ opertaor in Equation (15)
             result_matrix =  decay_factor * (alpha_val* adamic_scores + (1-alpha_val) * (weight_matrix.T * result_matrix * weight_matrix)) 
-            result_matrix.setdiag(1) ## setting back diagonal values to one for writing results, we can skip this line
+            result_matrix.setdiag(1) ## setting back diagonal values to one for writing results, we can skip this line for better efficiency
             
         print('AdaSim Matrix form Computation is done ...')                    
         return result_matrix           
@@ -62,17 +60,15 @@ def compute_AdaSim (graph='', decay_factor=0, iterations=0, alpha_val=1.0,link_t
         adamic_scores = weight_matrix * adj.T
         adamic_scores.setdiag(0)
         adamic_scores = adamic_scores/np.max(adamic_scores)  # min-max normalization
-        result_matrix = decay_factor*alpha_val*adamic_scores
-        
-        ''' @NOTE: Set diagonal values to one for writing results; since they are NOT used in computing similarity scores, we can skip this line for higher efficiency '''                
-        result_matrix.setdiag(1)
+        result_matrix = decay_factor*alpha_val*adamic_scores        
+        result_matrix.setdiag(1) ## Set diagonal values to one for writing results; since they are NOT used in computing similarity scores, we can skip this line for better efficiency 
     
         weight_matrix = normalize(weight_matrix, norm='l1', axis=1) # row normalized weight_matrix    
         for itr in range (2, iterations+1):                            
             print("Iteration "+str(itr)+' .... \n')
             result_matrix.setdiag(0) ## diagonal values are set back to zero; corresponding to the ∧ opertaor in Equation (15)
             result_matrix =  decay_factor * (alpha_val* adamic_scores + (1-alpha_val) * (weight_matrix * result_matrix * weight_matrix.T)) #+ iden_matrix
-            result_matrix.setdiag(1) ## setting back diagonal values to one for writing results, we can skip this line
+            result_matrix.setdiag(1) ## setting back diagonal values to one for writing results, we can skip this line for better efficiency 
 
         print('AdaSim Matrix form Computation is done ...')
         return result_matrix
