@@ -37,7 +37,7 @@ def compute_AdaSim (graph='', decay_factor=0, iterations=0, alpha_val=1.0,link_t
         adamic_scores = adamic_scores/np.max(adamic_scores)  # min-max normalization
         result_matrix = csr_matrix(decay_factor*alpha_val*adamic_scores)    
          
-        ''' @NOTE: Set diagonal values to one for writing results; since they are NOT used in computing similarity scores, we can skip this line '''        
+        ''' @NOTE: Set diagonal values to one for writing results; since they are NOT used in computing similarity scores, we can skip this line for higher efficiency '''        
         result_matrix.setdiag(1) ## set diagonal values to one; it is just for writing results since they are NOT used in computing similarity scores
             
         weight_matrix = normalize(weight_matrix, norm='l1', axis=0) # column normalized weight_matrix    
@@ -64,7 +64,7 @@ def compute_AdaSim (graph='', decay_factor=0, iterations=0, alpha_val=1.0,link_t
         adamic_scores = adamic_scores/np.max(adamic_scores)  # min-max normalization
         result_matrix = decay_factor*alpha_val*adamic_scores
         
-        ''' @NOTE: Set diagonal values to one for writing results; since they are NOT used in computing similarity scores, we can skip this line '''                
+        ''' @NOTE: Set diagonal values to one for writing results; since they are NOT used in computing similarity scores, we can skip this line for higher efficiency '''                
         result_matrix.setdiag(1)
     
         weight_matrix = normalize(weight_matrix, norm='l1', axis=1) # row normalized weight_matrix    
